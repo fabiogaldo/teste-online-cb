@@ -15,7 +15,7 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const label = 'Pergunta 1?';
+  const label = 'Pergunta 2?';
 
   const question = await Question.create({ label });
 
