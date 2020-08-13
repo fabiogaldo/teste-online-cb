@@ -3,6 +3,7 @@ const cors = require('cors');
 const db = require('./models');
 const response = require('./middlewares/response');
 
+const authController = require('./controllers/auth');
 const questionController = require('./controllers/question');
 const answerController = require('./controllers/answer');
 
@@ -14,6 +15,7 @@ app.use(response);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use('/auth', authController);
 app.use('/question', questionController);
 app.use('/answer', answerController);
 

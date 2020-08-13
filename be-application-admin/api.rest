@@ -1,0 +1,60 @@
+@baseUrl = http://localhost:3001
+@contentType = application/json
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTkzNzI3NDQzLCJleHAiOjE1OTM3MjkyNDN9.MeOPeG3Zn3jaVYBmON_mSf-ApVefouy9o12yFoKNhPQ
+
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidmVyc2lvbiI6MCwiaWF0IjoxNTkzNzI3NDQzLCJleHAiOjE1OTYzMTk0NDN9.cuz1dpnh0JklE8MO0VxgN-NgQqWr7DaU-TS_M49cUew
+
+### create an account
+POST {{baseUrl}}/auth/sign-up
+Content-Type: {{contentType}}
+
+{
+	"email": "fabiogaldo@gmail.com",
+	"password": "123456",
+	"password_confirmation": "123456"
+}
+
+### sign in
+POST {{baseUrl}}/auth/sign-in
+Content-Type: {{contentType}}
+
+{
+	"email": "fabiogaldo@gmail.com",
+	"password": "123456"
+}
+
+### refresh
+POST {{baseUrl}}/auth/refresh
+Content-Type: {{contentType}}
+Authorization: Bearer {{refreshToken}}
+
+### list questions
+GET {{baseUrl}}/question
+Content-Type: {{contentType}}
+Authorization: Bearer {{token}}
+
+### get a question by id
+GET {{baseUrl}}/question/1 
+Content-Type: {{contentType}}
+
+### create a question
+POST {{baseUrl}}/question
+Content-Type: {{contentType}}
+
+{
+	"label": "Pergunta nova?"
+}
+
+### update a question
+PUT {{baseUrl}}/question/1
+Content-Type: {{contentType}}
+
+{
+	"label": "New Google",
+	"isCorrect": true
+}
+
+### delete a question
+DELETE {{baseUrl}}/question/2
+Content-Type: {{contentType}}

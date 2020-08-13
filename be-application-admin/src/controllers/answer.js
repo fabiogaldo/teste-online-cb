@@ -9,15 +9,16 @@ const router = express.Router();
 
 router.get('/:id', async (req, res) => {
   const { questionId } = req.params;
-  const answers = await Answer.findAll({ where: { questionId: 1 } });
+  //const answers = await Answer.findAll({ where: { questionId: 1 } });
   const question = await Question.findAll({ where: { id: 1 } });
-
-  return res.jsonOK(answers);
+  return res.jsonOK(question);
 });
 
 router.post('/', async (req, res) => {
-  const label = 'Resposta E da pergunta 2';
-  const answer = await Answer.create({ label, isCorrect: false, questionId: 2 });
+  const { questionId, body } = req;
+  const { label, isCorrect } = body;
+
+  const answer = await Answer.create({ label, isCorrect, questionId });
 
   return res.jsonOK(answer);
 });

@@ -15,11 +15,12 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const label = 'Pergunta 2?';
+  const { body } = req;
+  const { label } = body;
 
   const question = await Question.create({ label });
 
-  return res.jsonOK(question);
+  return res.jsonOK(question.id);
 });
 
 module.exports = router;
